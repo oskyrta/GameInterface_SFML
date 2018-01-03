@@ -3,17 +3,10 @@
 #include "render.h"
 #include "camera.h"
 
-Render::Render()
-{
-	for (int i = 0; i < CameraType_Count; i++)
-	{
-		m_cameras[i] = 0;
-	}
-}
-
 Render::~Render()
 {
-	delete[] m_cameras;
+	for(int i = 0; i < CameraType_Count; i++)
+		delete m_cameras[i];
 }
 
 void Render::setup(int width, int height, std::string name)
@@ -26,8 +19,13 @@ void Render::setup(int width, int height, std::string name)
 
 	for (int i = 0; i < CameraType_Count; i++)
 	{
-		m_cameras[i] = new Camera();
+		m_cameras[i] = 0;
 	}
+}
+
+void Render::setupCamera(CameraType type, int width, int height)
+{
+	m_cameras[type] = new Camera(width, height);
 }
 
 bool Render::frame()
@@ -47,7 +45,8 @@ bool Render::frame()
 	// Draw image from cameras
 	for (int i = 0; i < CameraType_Count; i++)
 	{
-		m_renderWindow->draw(m_cameras[i]->getSprite());
+		if(m_cameras[i])
+			m_renderWindow->draw(m_cameras[i]->getSprite());
 	}
 
 	m_renderWindow->display();

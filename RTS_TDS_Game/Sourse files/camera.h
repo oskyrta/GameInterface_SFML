@@ -17,12 +17,10 @@ public:
 	void setPosition(Vec2 position);
 	Vec2 getPosition() { return m_position; };
 
-	// Set position of camera center on a window
 	void setOnScreenPosition(Vec2 position) { m_sprite.setPosition(position.getSFVector()); };
-	// Get position of camera center on a window
 	Vec2 getOnScreenPosition() { return m_sprite.getPosition(); };
 
-	sf::Sprite getSprite() { m_sprite.setTexture(m_renderTexture->getTexture()); }
+	sf::Sprite getSprite();
 
 	void setBackgroundColor(sf::Color color) { m_backgoundColor = color; };
 	sf::Color getBackgoundColor() { return m_backgoundColor; }

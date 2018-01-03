@@ -17,6 +17,7 @@ Camera::Camera()
 
 Camera::Camera(int width, int height)
 {
+	m_renderTexture = new sf::RenderTexture();
 	m_renderTexture->create(width, height);
 
 	m_size = Vec2(width, height);
@@ -31,8 +32,16 @@ Camera::Camera(int width, int height)
 
 Camera::~Camera()
 {
-	if (m_renderTexture)
-		delete m_renderTexture;
+	/*if (m_renderTexture)
+		delete m_renderTexture;*/
+}
+
+sf::Sprite Camera::getSprite()
+{
+	m_renderTexture->display();
+	m_sprite.setTexture(m_renderTexture->getTexture());
+
+	return m_sprite;
 }
 
 void Camera::setPosition(Vec2 position)

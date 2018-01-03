@@ -21,7 +21,7 @@ class Camera;
 class Render
 {
 public:
-	Render();
+	Render() {};
 	~Render();
 
 	// Single initialization
@@ -32,6 +32,7 @@ public:
 	};
 
 	void setup(int width, int height, std::string name);
+	void setupCamera(CameraType type, int width, int height);
 	bool frame();
 private:
 	Camera* m_cameras[CameraType_Count];
