@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../external/boost_1_65_1;../../external/SFML-2.4.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sourse files;../../external/boost_1_65_1;../../external/SFML-2.4.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -97,7 +97,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../../external/boost_1_65_1;../../external/SFML-2.4.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sourse files;../../external/boost_1_65_1;../../external/SFML-2.4.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -122,16 +122,36 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sourse files\camera.cpp" />
+    <ClCompile Include="Sourse files\dataManager.cpp" />
+    <ClCompile Include="Sourse files\eventSystem\eventController.cpp" />
+    <ClCompile Include="Sourse files\eventSystem\eventListener.cpp" />
     <ClCompile Include="Sourse files\game.cpp" />
+    <ClCompile Include="Sourse files\interface\interface.cpp" />
+    <ClCompile Include="Sourse files\interface\interfaceWindow.cpp" />
+    <ClCompile Include="Sourse files\interface\uiButton.cpp" />
+    <ClCompile Include="Sourse files\interface\uiObject.cpp" />
+    <ClCompile Include="Sourse files\interface\uiSprite.cpp" />
+    <ClCompile Include="Sourse files\interface\uiText.cpp" />
     <ClCompile Include="Sourse files\main.cpp" />
     <ClCompile Include="Sourse files\render.cpp" />
-    <ClCompile Include="Sourse files\vec2.cpp" />
+    <ClCompile Include="Sourse files\tools\utils.cpp" />
+    <ClCompile Include="Sourse files\tools\vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sourse files\camera.h" />
+    <ClInclude Include="Sourse files\dataManager.h" />
+    <ClInclude Include="Sourse files\eventSystem\eventController.h" />
+    <ClInclude Include="Sourse files\eventSystem\eventListener.h" />
     <ClInclude Include="Sourse files\game.h" />
+    <ClInclude Include="Sourse files\interface\interface.h" />
+    <ClInclude Include="Sourse files\interface\interfaceWindow.h" />
+    <ClInclude Include="Sourse files\interface\uiButton.h" />
+    <ClInclude Include="Sourse files\interface\uiObject.h" />
+    <ClInclude Include="Sourse files\interface\uiSprite.h" />
+    <ClInclude Include="Sourse files\interface\uiText.h" />
     <ClInclude Include="Sourse files\render.h" />
-    <ClInclude Include="Sourse files\vec2.h" />
+    <ClInclude Include="Sourse files\tools\utils.h" />
+    <ClInclude Include="Sourse files\tools\vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

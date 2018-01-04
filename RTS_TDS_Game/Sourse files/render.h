@@ -25,10 +25,10 @@ public:
 	~Render();
 
 	// Single initialization
-	static Render& instance()
+	static Render* instance()
 	{
 		static Render *instance_ = new Render();
-		return *instance_;
+		return instance_;
 	};
 
 	void setup(int width, int height, std::string name);

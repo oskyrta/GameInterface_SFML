@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Events">
+      <UniqueIdentifier>{36b048ce-8de3-48a1-a337-ecf52ee4ea27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{b4d6e44e-fa7c-43fa-8d3a-148cc80069c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tools">
+      <UniqueIdentifier>{98c3744c-161e-4901-97a8-b3b059c46cf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tools">
+      <UniqueIdentifier>{c4dab769-f1fe-4f74-9923-487a49a71092}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inteface">
+      <UniqueIdentifier>{b6020217-3701-40d4-a67d-99da575c9f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{a363c42e-ea03-4c6d-a993-6d4f6362f45d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sourse files\camera.cpp">
@@ -24,10 +42,40 @@
     <ClCompile Include="Sourse files\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sourse files\vec2.cpp">
+    <ClCompile Include="Sourse files\render.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sourse files\render.cpp">
+    <ClCompile Include="Sourse files\eventSystem\eventController.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\eventSystem\eventListener.cpp">
+      <Filter>Source Files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\tools\vec2.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\interface\interface.cpp">
+      <Filter>Source Files\Inteface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\interface\interfaceWindow.cpp">
+      <Filter>Source Files\Inteface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\interface\uiButton.cpp">
+      <Filter>Source Files\Inteface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\interface\uiObject.cpp">
+      <Filter>Source Files\Inteface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\interface\uiSprite.cpp">
+      <Filter>Source Files\Inteface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\interface\uiText.cpp">
+      <Filter>Source Files\Inteface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\tools\utils.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Sourse files\dataManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +86,40 @@
     <ClInclude Include="Sourse files\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sourse files\vec2.h">
+    <ClInclude Include="Sourse files\render.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sourse files\render.h">
+    <ClInclude Include="Sourse files\eventSystem\eventController.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\eventSystem\eventListener.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\tools\vec2.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\interface\interface.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\interface\interfaceWindow.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\interface\uiButton.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\interface\uiObject.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\interface\uiSprite.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\interface\uiText.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\tools\utils.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\dataManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

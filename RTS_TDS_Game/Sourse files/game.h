@@ -5,14 +5,14 @@
 class Game
 {
 public:
-	Game();
+	Game() {};
 	~Game();
 
 	// Single initialization
-	static Game& instance()
+	static Game* instance()
 	{
 		static Game *instance_ = new Game();
-		return *instance_;
+		return instance_;
 	};
 
 	void setup();

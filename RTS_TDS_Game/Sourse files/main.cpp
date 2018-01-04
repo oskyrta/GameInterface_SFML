@@ -1,14 +1,19 @@
 #include "game.h"
 #include "render.h"
+#include "dataManager.h"
 
-Render render;
+Render* render;
+DataManager* dataManager;
 
 void setup()
 {
 	render = Render::instance();
+	dataManager = DataManager::instance();
 
-	render.setup(720, 380, "Game");
-	render.setupCamera(CameraType_Main, 720, 380);
+	render->setup(720, 380, "Game");
+	render->setupCamera(CameraType_Main, 720, 380);
+
+	dataManager->loadData();
 }
 
 void initialize()
@@ -18,7 +23,7 @@ void initialize()
 
 bool loop()
 {
-	if( !render.frame() ) return false;
+	if( !render->frame() ) return false;
 
 	return true;
 }
