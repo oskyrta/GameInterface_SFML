@@ -2,11 +2,14 @@
 // Include
 #include "interface\interface.h"
 #include "interface\interfaceWindow.h"
-#include "game.h"
-#include "eventSystem\eventController.h"
 #include "interface\uiButton.h"
 #include "interface\uiText.h"
 #include "interface\uiSprite.h"
+
+#include "game.h"
+#include "render.h"
+#include "dataManager.h"
+#include "eventSystem\eventController.h"
 #include "tools/utils.h"
 
 
@@ -44,7 +47,9 @@ Interface::~Interface()
 void Interface::setupInterface()
 {
 	m_game = Game::instance();
+	m_render = Render::instance();
 	m_eventController = EventController::instance();
+	m_dataManager = DataManager::instance();
 
 	startListeningEvents();
 
@@ -56,6 +61,7 @@ void Interface::setupInterface()
 
 void Interface::startListeningEvents()
 {
+
 }
 
 void Interface::initialize()

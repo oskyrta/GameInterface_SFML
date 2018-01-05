@@ -1,12 +1,26 @@
-/////////////////////////
+////////////////////////////////
 // Include
 #include "render.h"
 #include "camera.h"
+
+CameraType GetCameraTypeByName(std::string name)
+{
+	if (name == "Main")
+		return CameraType_Main;
+}
+
+////////////////////////////////
+// Class Render
 
 Render::~Render()
 {
 	for(int i = 0; i < CameraType_Count; i++)
 		delete m_cameras[i];
+}
+
+Camera* Render::getCamera(std::string name)
+{
+	return m_cameras[GetCameraTypeByName(name)];
 }
 
 void Render::setup(int width, int height, std::string name)

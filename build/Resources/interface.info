@@ -1,0 +1,29 @@
+MainMenu
+{
+	Buttons
+	{
+		Name Button
+		{
+			x 0
+			y 0
+			width 10
+			height 30
+			Event OnButtonButtonDown
+		}
+	}
+	
+	Texts
+	{
+		Name Button
+		{
+			x 0
+			y 0
+		}
+		
+	}
+	
+	Images
+	{
+		
+	}
+}

@@ -1,26 +1,16 @@
 #pragma once
 /////////////////////////////////////////////////
 // Include
-#include "guiObject.h"
+#include "uiObject.h"
 #include <SFML\Graphics.hpp>
 
 /////////////////////////////////////////////////
 // Class GUISprite
-class GUISprite : public virtual GUIObject
+class UISprite : public virtual UIObject
 {
 public:
-	GUISprite(Camera* camera, std::string tag, Vec2 halfSize = Vec2()) 
-		: GUIObject(camera, tag, halfSize) 
-	{
-		// Initialize sprite
-		extern sf::Texture* g_atlas00;
-
-		m_sprite = new sf::Sprite();
-		m_sprite->setTexture(*g_atlas00);
-		m_sprite->setTextureRect(sf::IntRect());
-		m_spriteSize = 1;
-	};
-	~GUISprite();
+	UISprite();
+	~UISprite();
 
 	void render();
 
@@ -28,8 +18,12 @@ public:
 
 	void setRect(sf::IntRect rect) { m_rect = rect; m_sprite->setTextureRect(rect); };
 	void setScale(float scale) { m_sprite->setScale(scale, scale); };
-	void setHalfSizeAutomatically() { m_halfSize = Vec2(m_rect.width * m_spriteSize, m_rect.height * m_spriteSize) / 2; }
+	void setHalfSizeAutomatically() { m_size = Vec2(m_rect.width * m_spriteSize, m_rect.height * m_spriteSize) / 2; }
+	void setSpriteName(std::string name) { m_spriteName = name; }
+
 protected:
+	std::string m_spriteName;
+
 	sf::Sprite* m_sprite;
 	sf::IntRect m_rect;
 	int m_spriteSize;

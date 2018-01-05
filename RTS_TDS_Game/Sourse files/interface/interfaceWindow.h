@@ -2,6 +2,7 @@
 ////////////////////////////////////////////////
 // Include
 #include <string>
+#include <list>
 #include <SFML\Graphics.hpp>
 #include "tools/vec2.h"
 
@@ -9,12 +10,10 @@
 // Forvard declaration
 class Camera;
 class UIObject;
-class UISprite;
-class UIText;
-class UIButton;
 class EventController;
-enum GameEvents;
 class DataManager;
+
+typename PropertyTree;
 
 ////////////////////////////////////////////////
 // Class InterfaceWindow
@@ -40,11 +39,12 @@ public:
 	void setCamera(Camera* camera) { m_camera = camera; };
 
 private:
+	std::list<UIObject*> m_objectsList;
 	bool m_isActive;
 
 	EventController* m_eventController;
 
-	UIObject* m_objectsList[30];
+	PropertyTree* m_objects;
 
 	Camera* m_camera;
 	DataManager* m_dataManager;

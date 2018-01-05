@@ -7,6 +7,8 @@
 // Forvard declaration
 class InterfaceWindow;
 class EventController;
+class DataManager;
+class Render;
 class Game;
 
 ////////////////////////////////////////////////
@@ -48,4 +50,6 @@ private:
 
 	EventController* m_eventController;
 	Game* m_game;
+	Render* m_render;
+	DataManager* m_dataManager;
 };

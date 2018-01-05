@@ -34,6 +34,9 @@ public:
 	void setup(int width, int height, std::string name);
 	void setupCamera(CameraType type, int width, int height);
 	bool frame();
+
+	Camera* getCamera(CameraType type) { return m_cameras[type]; }
+	Camera* getCamera(std::string);
 private:
 	Camera* m_cameras[CameraType_Count];
 

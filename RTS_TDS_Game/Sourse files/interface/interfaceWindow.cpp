@@ -16,7 +16,7 @@
 
 #include <string>
 
-typedef boost::property_tree::ptree PropertyTree ;
+typedef boost::property_tree::ptree PropertyTree;
 
 ////////////////////////////////////////////////
 // Extern
@@ -28,34 +28,43 @@ InterfaceWindow::InterfaceWindow()
 {
 	m_isActive = false;
 	m_dataManager = DataManager::instance();
-
-	// Clear buttons ans text lists
-	for (int i = 0; i < 30; i++)
-	{
-		m_objectsList[i] = 0;
-	}
 }
 
 InterfaceWindow::~InterfaceWindow()
 {
 	// Delete interface objects
-	for (int i = 0; i < 30; i++)
+	for each (UIObject* obj in m_objectsList)
 	{
-		if (m_objectsList[i] != 0)
+		if (obj != 0)
 		{
-			delete m_objectsList[i];
-			m_objectsList[i] = 0;
+			delete obj;
+			obj = 0;
 		}
 	}
+
+	m_objectsList.clear();
 }
 
 void InterfaceWindow::createButtons()
 {
-	PropertyTree buttons = m_dataManager->getInterfaceSettings()->get_child("Buttons");
+	PropertyTree buttons = m_objects->get_child("Buttons");
+	int x, y, width, height;
 
 	BOOST_FOREACH(auto &v, buttons)
 	{
-		
+		UIButton* button = new UIButton();
+		std::string name = v.second.get<std::string>("Name");
+		x = v.second.get<int>(name + ".x");
+		y = v.second.get<int>(name + ".y");
+		width = v.second.get<int>(name + ".width");
+		height = v.second.get<int>(name + ".height");
+
+		button->setName(name);
+		button->setPosition(x, y);
+		button->setEvent(v.second.get<std::string>(name + ".Event"));
+		button->setSize(x, y);
+
+		m_objectsList.push_back(button);
 	}
 }
 
@@ -71,6 +80,7 @@ void InterfaceWindow::createSprites()
 
 void InterfaceWindow::initialize(std::string name)
 {
+	m_objects = &m_dataManager->getInterfaceSettings()->get_child(name);
 
 }
 

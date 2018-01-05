@@ -1,9 +1,8 @@
 /////////////////////////////////////////////////
 // Include
-#include "guiButton.h"
-#include "eventController.h"
-#include "levelSettings.h"
-#include "utils.h"
+#include "uiButton.h"
+#include "eventSystem\eventController.h"
+#include "tools\utils.h"
 #include <Windows.h>
 
 /////////////////////////////////////////////////
@@ -11,16 +10,15 @@
 bool leftClick = false;
 
 /////////////////////////////////////////////////
-// Class GUIButton
-void GUIButton::initialize(EventController* eventController, std::string gameEvent)
+// Class UIButton
+UIButton::UIButton()
 {
-	m_eventController = eventController;
-	m_event = gameEvent;
+	m_eventController = EventController::instance();
 }
 
-void GUIButton::update()
+void UIButton::update()
 {
-	GUIObject::update();
+	UIObject::update();
 
 	leftClick = false;
 	if (m_eventController->getEventState(GameEvent_LeftButtonDown)) leftClick = true;
@@ -37,8 +35,8 @@ void GUIButton::update()
 	}
 }
 
-void GUIButton::render()
+void UIButton::render()
 {
-	GUISprite::render();
-	GUIText::render();
+	UISprite::render();
+	UIText::render();
 }

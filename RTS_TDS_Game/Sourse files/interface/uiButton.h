@@ -1,36 +1,26 @@
 #pragma once
 ////////////////////////////////////////////////
 // Include
-#include "guiText.h"
-#include "guiSprite.h"
+#include "uiText.h"
+#include "uiSprite.h"
 
 ////////////////////////////////////////////////
 // Forvard declaration
 class EventController;
-enum GameEvents;
 
 ////////////////////////////////////////////////
 // Class GUIButton
-class GUIButton : public GUIText, public GUISprite
+class UIButton : public UIText, public UISprite
 {
 public:
-	GUIButton(Camera* camera, std::string tag, Vec2 halfSize)
-		: GUISprite(camera, tag, halfSize)
-		, GUIText(camera, tag, halfSize)
-		, GUIObject(camera, tag, halfSize)
-	{
-		m_eventController = 0;
-		m_event = "";
-	};
+	UIButton();
 
 	virtual void render();
 	virtual void update();
 
-	void initialize(EventController* eventController, std::string gameEvent);
-
 	void setEvent(std::string gameEvent) { m_event = gameEvent; };
 	void setEventController(EventController* controller) { m_eventController = controller; };
-	void setSprite(std::string spriteName) { GUISprite::initialize(spriteName); GUISprite::setHalfSizeAutomatically(); };
+	void setSprite(std::string spriteName) { UISprite::initialize(spriteName); UISprite::setHalfSizeAutomatically(); };
 
 private:
 	std::string m_event;

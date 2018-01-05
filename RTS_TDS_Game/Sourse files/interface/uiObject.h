@@ -23,20 +23,21 @@ public:
 
 	void setPosition(Vec2 pos) { m_pos = pos; };
 	void setPosition(float x, float y) { m_pos = Vec2(x, y); }
-	void setHalfSize(Vec2 halfSize) { m_halfSize = halfSize; };
+	void setSize(Vec2 size) { m_size = size; };
+	void setSize(float width, float height) { m_size = Vec2(width, height); }
 	void setCamera(Camera* camera) { m_camera = camera; };
-	void setTag(std::string tag) { m_tag = tag; };
+	void setName(std::string name) { m_name = name; };
 
-	Vec2 getHalfSize() { return m_halfSize; };
+	Vec2 getSize() { return m_size; };
 	bool getMouseOnObject() { return m_mouseOnObject; };
 
 protected:
 	bool m_mouseOnObject;
 
 	Vec2 m_pos;
-	Vec2 m_halfSize;
+	Vec2 m_size;
 
-	std::string m_tag;
+	std::string m_name;
 
 	Camera* m_camera;
 };

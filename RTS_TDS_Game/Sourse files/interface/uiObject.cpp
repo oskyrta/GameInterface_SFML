@@ -10,24 +10,24 @@
 UIObject::UIObject()
 {
 	m_pos = Vec2();
-	m_halfSize = Vec2();
-	m_tag = "";
+	m_size = Vec2();
+	m_name = "";
 	m_camera = 0;
 }
 
-UIObject::UIObject(Camera* camera, std::string tag, Vec2 halfSize)
+UIObject::UIObject(Camera* camera, std::string name, Vec2 halfSize)
 {
-	m_pos = GetPositionByTag(tag);
-	m_halfSize = halfSize;
+	m_pos = GetPositionByTag(name);
+	m_size = halfSize;
 	m_camera = camera;
-	m_tag = tag;
+	m_name = name;
 }
 
 UIObject::~UIObject()
 {
 	//std::cout << m_tag + " " << m_pos.x << " " << m_pos.y << std::endl;
-	settingsManager.p_interfaceSettings->put(m_tag + ".x", m_pos.x);
-	settingsManager.p_interfaceSettings->put(m_tag + ".y", m_pos.y);
+	settingsManager.p_interfaceSettings->put(m_name + ".x", m_pos.x);
+	settingsManager.p_interfaceSettings->put(m_name + ".y", m_pos.y);
 }
 
 void UIObject::update()
@@ -42,5 +42,5 @@ void UIObject::update()
 	Vec2 mousePosition = Vec2(worldPosition.x, worldPosition.y) - m_camera->getPosition();
 
 	// Check intersect with mouse
-	if (abs(mousePosition.x - m_pos.x) <= m_halfSize.x && abs(mousePosition.y - m_pos.y) <= m_halfSize.y) m_mouseOnObject = true;
+	if (abs(mousePosition.x - m_pos.x) <= m_size.x && abs(mousePosition.y - m_pos.y) <= m_size.y) m_mouseOnObject = true;
 }
