@@ -78,6 +78,9 @@
     <ClCompile Include="Sourse files\dataManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sourse files\inputController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sourse files\camera.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="Sourse files\dataManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sourse files\inputController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

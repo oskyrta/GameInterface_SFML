@@ -126,6 +126,7 @@
     <ClCompile Include="Sourse files\eventSystem\eventController.cpp" />
     <ClCompile Include="Sourse files\eventSystem\eventListener.cpp" />
     <ClCompile Include="Sourse files\game.cpp" />
+    <ClCompile Include="Sourse files\inputController.cpp" />
     <ClCompile Include="Sourse files\interface\interface.cpp" />
     <ClCompile Include="Sourse files\interface\interfaceWindow.cpp" />
     <ClCompile Include="Sourse files\interface\uiButton.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Sourse files\eventSystem\eventController.h" />
     <ClInclude Include="Sourse files\eventSystem\eventListener.h" />
     <ClInclude Include="Sourse files\game.h" />
+    <ClInclude Include="Sourse files\inputController.h" />
     <ClInclude Include="Sourse files\interface\interface.h" />
     <ClInclude Include="Sourse files\interface\interfaceWindow.h" />
     <ClInclude Include="Sourse files\interface\uiButton.h" />
