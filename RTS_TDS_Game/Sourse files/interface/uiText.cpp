@@ -4,6 +4,7 @@
 // Include
 #include "uiText.h"
 #include "camera.h"
+#include "dataManager.h"
 
 ////////////////////////////////////////////////
 // Class UIText
@@ -20,23 +21,33 @@ UIText::UIText()
 	m_text = sf::Text();
 }
 
-void UIText::initialize(std::string string, sf::Font* font, int characterSize, sf::Color color)
+void UIText::initialize(PropertyTree& tree)
+{
+	m_tree = tree;
+	m_string = m_tree.get<std::string>("String");
+	m_pos.x = m_tree.get<int>("x");
+	m_pos.y = m_tree.get<int>("y");
+	m_characterSize = m_tree.get<int>("CharacterSize");
+	m_color.r = m_tree.get<int>("Color.r");
+	m_color.g = m_tree.get<int>("Color.g");
+	m_color.b = m_tree.get<int>("Color.b");
+
+	initializeText();
+}
+
+void UIText::initializeText()
 {
 	// Initialize text variable
-	m_text.setFont(*font);
-	m_text.setPosition(m_pos.x + m_size.x, m_pos.y - characterSize/2);
-	m_text.setCharacterSize(characterSize);
-	m_text.setString(string);
-	m_text.setFillColor(color);
-
-	// Initialize
-	m_string = string;
-	m_characterSize = characterSize;
+	m_text.setFont(*m_dataManager->getFont());
+	m_text.setPosition(m_pos.x + m_size.x, m_pos.y - m_characterSize/2);
+	m_text.setCharacterSize(m_characterSize);
+	m_text.setString(m_string);
+	m_text.setFillColor(m_color);
 
 	int i = 0;
-	while(i < string.size())
+	while(i < m_string.size())
 	{
-		if (string[i] == '^')
+		if (m_string[i] == '^')
 		{
 			m_changedValuePosition = i;
 			break;
@@ -44,9 +55,9 @@ void UIText::initialize(std::string string, sf::Font* font, int characterSize, s
 		i++;
 	}
 
-	string.copy(s_start, m_changedValuePosition, 0);
+	m_string.copy(s_start, m_changedValuePosition, 0);
 	if(m_changedValuePosition > 0)
-		string.copy(s_end, string.size() - (m_changedValuePosition + 1), m_changedValuePosition+1);
+		m_string.copy(s_end, m_string.size() - (m_changedValuePosition + 1), m_changedValuePosition+1);
 }
 
 void UIText::render()
@@ -54,9 +65,7 @@ void UIText::render()
 	if (m_intChangedValue) 
 		m_text.setString(s_start + std::to_string(*m_intChangedValue) + s_end);
 	if (m_doubleChangedValue)
-	{
 		m_text.setString(s_start + std::to_string(*m_doubleChangedValue) + s_end);
-	}
 
 	sf::Vector2f position = getTextPosition();
 	m_text.setPosition(position);

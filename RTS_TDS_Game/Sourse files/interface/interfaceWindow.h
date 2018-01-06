@@ -5,6 +5,7 @@
 #include <list>
 #include <SFML\Graphics.hpp>
 #include "tools/vec2.h"
+#include <boost\property_tree\ptree.hpp>
 
 ////////////////////////////////////////////////
 // Forvard declaration
@@ -13,7 +14,7 @@ class UIObject;
 class EventController;
 class DataManager;
 
-typename PropertyTree;
+typedef boost::property_tree::ptree PropertyTree;
 
 ////////////////////////////////////////////////
 // Class InterfaceWindow
@@ -35,7 +36,6 @@ public:
 	void setActive(bool active) { m_isActive = active; };
 	bool getActive() { return m_isActive; };
 
-	void setEventController(EventController* ec) { m_eventController = ec; };
 	void setCamera(Camera* camera) { m_camera = camera; };
 
 private:
@@ -44,7 +44,7 @@ private:
 
 	EventController* m_eventController;
 
-	PropertyTree* m_objects;
+	PropertyTree m_objects;
 
 	Camera* m_camera;
 	DataManager* m_dataManager;

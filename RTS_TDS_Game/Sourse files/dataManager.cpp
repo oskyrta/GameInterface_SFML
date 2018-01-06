@@ -18,11 +18,13 @@ void DataManager::loadData()
 	//m_rep += "\\GameName\\Settings\\";
 	m_rep = "Resources\\";
 
+	m_font.loadFromFile(m_rep + "stan0753.ttf");
+
 	std::ifstream in(m_rep + "binds.info");
 	boost::property_tree::info_parser::read_info(in, m_binds);
 	in.close();
 
-	std::ifstream in(m_rep + "inteface.info");
+	in.open(m_rep + "inteface.info");
 	boost::property_tree::info_parser::read_info(in, m_interface);
 	in.close();
 }

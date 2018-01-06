@@ -66,7 +66,14 @@ void Interface::startListeningEvents()
 
 void Interface::initialize()
 {
+	for (int i = 0; i < MenuTypeCount; i++)
+	{
+		std::string menuName = getMenuNameByType((MenuType)i);
 
+		m_menuList[i] = new InterfaceWindow();
+		m_menuList[i]->setCamera(m_render->getCamera(menuName));
+		m_menuList[i]->initialize(menuName);
+	}
 }
 
 void Interface::changeWindow(MenuType windowType)

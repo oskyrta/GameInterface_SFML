@@ -1,23 +1,40 @@
-MainMenu
+Main
 {
+	CameraName Main
 	Buttons
 	{
-		Name Button
+		Button
 		{
 			x 0
 			y 0
 			width 10
 			height 30
+			String Button
+			Color
+			{
+				r 240
+				g 240
+				b 240
+			}
+			CharacterSize 16
 			Event OnButtonButtonDown
+			SpriteName 
 		}
 	}
 	
 	Texts
 	{
-		Name Button
+		Text
 		{
 			x 0
 			y 0
+			Color
+			{
+				r 240
+				g 240
+				b 240
+			}
+			CharacterSize 16
 		}
 		
 	}

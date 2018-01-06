@@ -2,10 +2,14 @@
 /////////////////////////////////////////////////
 // Include
 #include "tools/vec2.h"
+#include <boost\property_tree\ptree.hpp>
 
 /////////////////////////////////////////////////
 // Forvard declaration
 class Camera;
+class DataManager;
+
+typedef boost::property_tree::ptree PropertyTree;
 
 /////////////////////////////////////////////////
 // Class GUIObject
@@ -13,13 +17,12 @@ class UIObject
 {
 public:
 	UIObject();
-	UIObject(Camera* camera, std::string tag, Vec2 halfSize);
 	virtual ~UIObject() ;
 
 	virtual void render() {};
 	virtual void update();
 
-	virtual void initialize() {};
+	virtual void initialize(PropertyTree& tree) {};
 
 	void setPosition(Vec2 pos) { m_pos = pos; };
 	void setPosition(float x, float y) { m_pos = Vec2(x, y); }
@@ -32,6 +35,7 @@ public:
 	bool getMouseOnObject() { return m_mouseOnObject; };
 
 protected:
+	PropertyTree m_tree;
 	bool m_mouseOnObject;
 
 	Vec2 m_pos;
@@ -40,4 +44,5 @@ protected:
 	std::string m_name;
 
 	Camera* m_camera;
+	DataManager* m_dataManager;
 };
