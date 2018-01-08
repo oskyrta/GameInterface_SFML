@@ -6,6 +6,7 @@
 #include <string>
 #include <SFML\Graphics.hpp>
 
+
 ///////////////////////////////////
 // Class DataManager
 class DataManager
@@ -22,15 +23,15 @@ public:
 
 	void loadData();
 
-	boost::property_tree::ptree* getBinds() { return &m_binds; }
-	boost::property_tree::ptree* getInterfaceSettings() { return &m_interface; }
+	PropertyTree* getBinds() { return &m_binds; }
+	PropertyTree* getInterfaceSettings() { return &m_interface; }
 
 	sf::Font* getFont() { return &m_font; }
 
 private:
 	std::string m_rep; 
-	boost::property_tree::ptree m_binds;
-	boost::property_tree::ptree m_interface;
+	PropertyTree m_binds;
+	PropertyTree m_interface;
 
 	sf::Font m_font;
 };

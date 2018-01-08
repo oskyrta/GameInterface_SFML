@@ -4,6 +4,13 @@
 #include "uiObject.h"
 #include <SFML\Graphics.hpp>
 
+enum TextAlign
+{
+	TextAlign_Left,
+	TextAlign_Center,
+	TextAlign_Right
+};
+
 /////////////////////////////////////////////////
 // Class UIText
 class UIText : public virtual UIObject
@@ -28,8 +35,10 @@ protected:
 	sf::Font* m_font;
 	sf::Text m_text;
 	sf::Color m_color;
+	TextAlign m_align;
 
 	Vec2 m_textOffset;
+	Vec2 m_textSize;
 
 	int m_characterSize; 
 	char s_start[32], s_end[32];

@@ -15,6 +15,7 @@ UIText::UIText()
 	m_intChangedValue = 0;
 	m_doubleChangedValue = 0;
 	m_characterSize = 8;
+	m_align = TextAlign_Left;
 
 	m_changedValuePosition = 0;
 
@@ -43,6 +44,9 @@ void UIText::initializeText()
 	m_text.setCharacterSize(m_characterSize);
 	m_text.setString(m_string);
 	m_text.setFillColor(m_color);
+
+	m_textSize.x = m_text.getLocalBounds().width;
+	m_textSize.y = m_text.getLocalBounds().height;
 
 	int i = 0;
 	while(i < m_string.size())
