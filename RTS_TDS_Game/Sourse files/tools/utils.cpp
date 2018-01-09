@@ -8,6 +8,8 @@
 // Funtions
 bool IsKeyDown(int virtualKeyCode)
 {
+	if (virtualKeyCode == 0) return false;
+
 	short keyState = GetAsyncKeyState(virtualKeyCode);
 	return ((keyState & 0x8000) > 0);
 }

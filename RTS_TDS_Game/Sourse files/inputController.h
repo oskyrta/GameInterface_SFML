@@ -3,32 +3,35 @@
 // Include
 #include <boost\property_tree\ptree.hpp>
 
-typedef boost::property_tree::ptree PropertyTree;
-
 //////////////////////////////
 // Forward declaration
 class DataManager;
+class Vec2;
+struct Bind;
 
-enum class Binds
+enum Controls
 {
-	Fire,
-
-	Count
+	LEFT_BUTTON = 0x01,
+	RIGHT_BUTTON = 0x02,
+	ENTER_KEY = 0x0D,
+	ESC_KEY = 0x1B,
 };
 
-struct Bind
+enum KeyState
 {
-	enum KeyState
-	{
-		None,
-		Down,
-		Stay,
-		Up
-	};
-private:
-	short firstKey;
-	short secondKey;
+	KeyState_None = 0,
+	KeyState_Down = 1 << 0,
+	KeyState_Pressed = 1 << 1,
+	KeyState_Up = 1 << 2
 };
+
+enum Binds
+{
+	Bind_Fire,
+
+	Bind_Count
+};
+
 
 //////////////////////////////
 // Class InputController
@@ -43,11 +46,17 @@ public:
 		return instance_;
 	};
 
+	short GetBindState(Binds bind) { return m_binds[bind]->state; }
+	Vec2 GetMousePosition();
+	bool MouseOnWindow();
+
 	void setup();
+	void update();
 
 private:
 	DataManager* m_dataManager;
-	PropertyTree* m_tree;
+	boost::property_tree::ptree* m_tree;
 
-	Bind m_binds[(int)Binds::Count];
+	Bind* m_binds[Bind_Count];
+	Bind* m_controls[4];
 };
