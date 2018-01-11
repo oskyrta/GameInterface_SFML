@@ -8,6 +8,7 @@
 // Forvard declaration
 class Camera;
 class DataManager;
+class InputController;
 
 typedef boost::property_tree::ptree PropertyTree;
 
@@ -32,6 +33,7 @@ public:
 	void setName(std::string name) { m_name = name; };
 
 	Vec2 getSize() { return m_size; };
+	std::string getName() { return m_name; };
 	bool getMouseOnObject() { return m_mouseOnObject; };
 
 protected:
@@ -45,4 +47,5 @@ protected:
 
 	Camera* m_camera;
 	DataManager* m_dataManager;
+	InputController* m_inputController;
 };

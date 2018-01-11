@@ -46,9 +46,9 @@ public:
 		return instance_;
 	};
 
-	short GetBindState(Binds bind) { return m_binds[bind]->state; }
-	Vec2 GetMousePosition();
-	bool MouseOnWindow();
+	short getBindState(Binds bind);
+	Vec2 getMousePosition();
+	bool mouseOnWindow();
 
 	void setup();
 	void update();

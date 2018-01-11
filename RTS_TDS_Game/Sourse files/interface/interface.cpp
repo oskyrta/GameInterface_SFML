@@ -12,7 +12,6 @@
 #include "eventSystem\eventController.h"
 #include "tools/utils.h"
 
-
 /////////////////////////////////////////////////
 // Variables
 static MenuType activeWindowIndex = MenuType_MainMenu;

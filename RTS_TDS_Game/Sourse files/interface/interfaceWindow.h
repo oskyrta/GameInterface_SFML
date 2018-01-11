@@ -38,14 +38,17 @@ public:
 
 	void setCamera(Camera* camera) { m_camera = camera; };
 
+	UIObject* getObject(std::string name);
+
 private:
 	std::list<UIObject*> m_objectsList;
 	bool m_isActive;
 
-	EventController* m_eventController;
+	std::string m_name;
 
 	PropertyTree m_objects;
 
 	Camera* m_camera;
+	EventController* m_eventController;
 	DataManager* m_dataManager;
 };

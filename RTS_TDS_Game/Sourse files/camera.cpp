@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////
 // Include
 #include "camera.h"
-#include "vec2.h"
+#include "tools\vec2.h"
 
 ////////////////////////////////////////////////
 // Class Camera
@@ -25,7 +25,7 @@ Camera::Camera(int width, int height)
 	m_position = Vec2();
 	m_onScreenPosition = Vec2();
 
-	m_sprite.setOrigin((float)width / 2, (float)height / 2);
+	//m_sprite.setOrigin((float)width / 2, (float)height / 2);
 
 	m_backgoundColor = sf::Color(25, 26, 29);
 }
@@ -36,10 +36,12 @@ Camera::~Camera()
 		delete m_renderTexture;*/
 }
 
-sf::Sprite Camera::getSprite()
+sf::Sprite& Camera::getSprite()
 {
 	m_renderTexture->display();
 	m_sprite.setTexture(m_renderTexture->getTexture());
+
+	//m_renderTexture->clear(m_backgoundColor);
 
 	return m_sprite;
 }

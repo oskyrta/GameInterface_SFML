@@ -56,14 +56,28 @@ bool Render::frame()
 			m_renderWindow->close();
 	}
 
+	return true;
+}
+
+void Render::draw()
+{
+	m_renderWindow->clear();
+
 	// Draw image from cameras
 	for (int i = 0; i < CameraType_Count; i++)
 	{
-		if(m_cameras[i])
+		if (m_cameras[i])
 			m_renderWindow->draw(m_cameras[i]->getSprite());
 	}
 
 	m_renderWindow->display();
+}
 
-	return true;
+void Render::clear()
+{
+	for (int i = 0; i < CameraType_Count; i++)
+	{
+		if (m_cameras[i])
+			m_cameras[i]->clearTexture();
+	}
 }

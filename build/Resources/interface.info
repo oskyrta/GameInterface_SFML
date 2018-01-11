@@ -1,12 +1,12 @@
-Main
+Main 
 {
-	CameraName Main
+	b 0
 	Buttons
 	{
 		Button
 		{
-			x 0
-			y 0
+			x 100
+			y 100
 			width 10
 			height 30
 			String Button
@@ -28,6 +28,7 @@ Main
 		{
 			x 0
 			y 0
+			String Text
 			Color
 			{
 				r 240
@@ -43,4 +44,9 @@ Main
 	{
 		
 	}
+}
+
+MiniMap
+{
+	
 }

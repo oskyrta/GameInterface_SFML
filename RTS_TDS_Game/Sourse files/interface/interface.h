@@ -28,10 +28,10 @@ public:
 	Interface() {};
 	~Interface();
 
-	static Interface& instance()
+	static Interface* instance()
 	{
 		static Interface *instance_ = new Interface();
-		return *instance_;
+		return instance_;
 	};
 
 	void setupInterface();

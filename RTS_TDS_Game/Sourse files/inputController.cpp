@@ -3,6 +3,7 @@
 #include "inputController.h"
 #include "dataManager.h"
 #include "tools\utils.h"
+#include "tools\vec2.h"
 #include <boost\foreach.hpp>
 #include <boost\property_tree\ptree.hpp>
 
@@ -88,4 +89,21 @@ void InputController::update()
 
 	for (int i = 0; i < Bind_Count; i++)
 		m_binds[i]->setState(IsKeyDown(m_binds[i]->firstKey) || IsKeyDown(m_binds[i]->secondKey));
+}
+
+short InputController::getBindState(Binds bind)
+{
+	 return m_binds[bind]->state; 
+}
+
+Vec2 InputController::getMousePosition()
+{
+
+	return Vec2();
+}
+
+bool InputController::mouseOnWindow()
+{
+
+	return false;
 }

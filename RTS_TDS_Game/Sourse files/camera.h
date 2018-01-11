@@ -3,7 +3,7 @@
 // Include
 #include <SFML\Graphics.hpp>
 #include <boost\property_tree\ptree.hpp>
-#include "vec2.h"
+#include "tools\vec2.h"
 
 /////////////////////////////////////////////////
 // Class Camera
@@ -20,7 +20,7 @@ public:
 	void setOnScreenPosition(Vec2 position) { m_sprite.setPosition(position.getSFVector()); };
 	Vec2 getOnScreenPosition() { return m_sprite.getPosition(); };
 
-	sf::Sprite getSprite();
+	sf::Sprite& getSprite();
 
 	void setBackgroundColor(sf::Color color) { m_backgoundColor = color; };
 	sf::Color getBackgoundColor() { return m_backgoundColor; }

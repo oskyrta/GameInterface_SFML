@@ -25,13 +25,13 @@ UIText::UIText()
 void UIText::initialize(PropertyTree& tree)
 {
 	m_tree = tree;
-	m_string = m_tree.get<std::string>("String");
+	m_string = m_tree.get<std::string>("String", "");
 	m_pos.x = m_tree.get<int>("x");
 	m_pos.y = m_tree.get<int>("y");
 	m_characterSize = m_tree.get<int>("CharacterSize");
 	m_color.r = m_tree.get<int>("Color.r");
 	m_color.g = m_tree.get<int>("Color.g");
-	m_color.b = m_tree.get<int>("Color.b");
+	m_color.b = m_tree.get<int>("Color.b"); 
 
 	initializeText();
 }

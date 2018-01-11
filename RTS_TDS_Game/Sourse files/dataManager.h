@@ -22,15 +22,15 @@ public:
 
 	void loadData();
 
-	PropertyTree* getBinds() { return &m_binds; }
-	PropertyTree* getInterfaceSettings() { return &m_interface; }
+	boost::property_tree::ptree* getBinds() { return &m_binds; }
+	boost::property_tree::ptree* getInterfaceSettings() { return &m_interface; }
 
-	sf::Font* getFont() { return &m_font; }
+	sf::Font* getFont();
 
 private:
 	std::string m_rep; 
 	boost::property_tree::ptree m_binds;
 	boost::property_tree::ptree m_interface;
 
-	sf::Font m_font;
+	sf::Font* m_font;
 };

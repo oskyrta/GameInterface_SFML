@@ -14,10 +14,10 @@
 #include <boost\foreach.hpp>
 
 #include <string>
+#include <iostream>
 
 ////////////////////////////////////////////////
 // Extern
-extern sf::Font* g_font;
 
 ////////////////////////////////////////////////
 // Class InterfaceWindow
@@ -25,6 +25,7 @@ InterfaceWindow::InterfaceWindow()
 {
 	m_isActive = false;
 	m_dataManager = DataManager::instance();
+	m_eventController = EventController::instance();
 }
 
 InterfaceWindow::~InterfaceWindow()
@@ -81,6 +82,7 @@ void InterfaceWindow::createSprites()
 
 void InterfaceWindow::initialize(std::string name)
 {
+	m_name = name;
 	m_objects = m_dataManager->getInterfaceSettings()->get_child(name);
 
 	createButtons();
@@ -90,38 +92,45 @@ void InterfaceWindow::initialize(std::string name)
 
 void InterfaceWindow::update()
 {
-	sf::Vector2i mousePosition = sf::Mouse::getPosition(*m_camera->getRenderWindow());
-	sf::Vector2f worldPosition = m_camera->getRenderWindow()->mapPixelToCoords(mousePosition);
+	//sf::Vector2i mousePosition = sf::Mouse::getPosition(*m_camera->getRenderWindow());
+	//sf::Vector2f worldPosition = m_camera->getRenderWindow()->mapPixelToCoords(mousePosition);
 
-	for (int i = 0; i < 30; i++)
+	for each (UIObject* obj in m_objectsList)
 	{
-		if (m_objectsList[i] != 0)
-			m_objectsList[i]->update();
+		obj->update();
 	}
 	
-	if (IsKeyDown(0x70) && m_eventController->getEventState(GameEvent_LeftButtonStay))
-	{
-		for (int i = 0; i < 30; i++)
-		{
-			if (m_objectsList[i] != 0 && m_objectsList[i]->getMouseOnObject() && m_eventController->getEventState(GameEvent_LeftButtonStay) )
-			{
-				// Calculate cursor position on window
-				Vec2 windowCursorPosition = Vec2(round(worldPosition.x), round(worldPosition.y)) + m_camera->getPosition();
-				m_objectsList[i]->setPosition(windowCursorPosition);
+	//if (IsKeyDown(0x70) && m_eventController->getEventState(GameEvent_LeftButtonStay))
+	//{
+	//	for (int i = 0; i < 30; i++)
+	//	{
+	//		if (m_objectsList[i] != 0 && m_objectsList[i]->getMouseOnObject() && m_eventController->getEventState(GameEvent_LeftButtonStay) )
+	//		{
+	//			// Calculate cursor position on window
+	//			Vec2 windowCursorPosition = Vec2(round(worldPosition.x), round(worldPosition.y)) + m_camera->getPosition();
+	//			m_objectsList[i]->setPosition(windowCursorPosition);
 
-				break;
-			}
-		}
-	}
+	//			break;
+	//		}
+	//	}
+	//}
 }
 
 void InterfaceWindow::render()
 {
-	for (int i = 0; i < 30; i++)
+	for each (UIObject* obj in m_objectsList)
 	{
-		if (m_objectsList[i] != 0)
-		{
-			m_objectsList[i]->render();
-		}
+		obj->render();
 	}
+}
+
+UIObject* InterfaceWindow::getObject(std::string name)
+{
+	for each (UIObject* object in m_objectsList)
+	{
+		if (object->getName() == name)
+			return object;
+	}
+
+	return 0;
 }
