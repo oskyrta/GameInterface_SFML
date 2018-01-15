@@ -1,52 +1,41 @@
-Main 
+Main
 {
-	b 0
-	Buttons
-	{
-		Button
-		{
-			x 100
-			y 100
-			width 10
-			height 30
-			String Button
-			Color
-			{
-				r 240
-				g 240
-				b 240
-			}
-			CharacterSize 16
-			Event OnButtonButtonDown
-			SpriteName 
-		}
-	}
-	
-	Texts
-	{
-		Text
-		{
-			x 0
-			y 0
-			String Text
-			Color
-			{
-				r 240
-				g 240
-				b 240
-			}
-			CharacterSize 16
-		}
-		
-	}
-	
-	Images
-	{
-		
-	}
+    Buttons
+    {
+        Button
+        {
+            x 0.5
+            y 0.300000012
+            width 10
+            height 30
+            String Button
+            Color
+            {
+                r 240
+                g 240
+                b 240
+            }
+            CharacterSize 16
+            Event OnButtonButtonDown
+            SpriteName ""
+        }
+    }
+    Texts
+    {
+        Text
+        {
+            x -0.699999988
+            y 0.400000006
+            String Text
+            Color
+            {
+                r 240
+                g 240
+                b 240
+            }
+            CharacterSize 16
+        }
+    }
+    Images ""
 }
-
-MiniMap
-{
-	
-}
+MiniMap ""

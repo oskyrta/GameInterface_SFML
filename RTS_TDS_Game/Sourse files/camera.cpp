@@ -21,6 +21,7 @@ Camera::Camera(int width, int height)
 	m_renderTexture->create(width, height);
 
 	m_size = Vec2(width, height);
+	m_halfSize = m_size / 2;
 	m_view = sf::View(sf::FloatRect(0, 0, width, height));
 	m_position = Vec2();
 	m_onScreenPosition = Vec2();

@@ -18,7 +18,6 @@ public:
 
 	void setRect(sf::IntRect rect) { m_rect = rect; m_sprite->setTextureRect(rect); };
 	void setScale(float scale) { m_sprite->setScale(scale, scale); };
-	void setHalfSizeAutomatically() { m_size = Vec2(m_rect.width * m_spriteSize, m_rect.height * m_spriteSize) / 2; }
 	void setSpriteName(std::string name) { m_spriteName = name; }
 
 protected:

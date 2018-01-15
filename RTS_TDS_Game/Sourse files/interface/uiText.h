@@ -17,6 +17,7 @@ class UIText : public virtual UIObject
 {
 public:
 	UIText();
+	~UIText() {};
 
 	virtual void render();
 
@@ -25,7 +26,7 @@ public:
 	void setString(std::string string) { m_text.setString(string); };
 	sf::Vector2f getTextPosition();
 
-	void initialize(PropertyTree& tree);
+	void initialize(PropertyTree* tree);
 
 protected:
 	void initializeText();

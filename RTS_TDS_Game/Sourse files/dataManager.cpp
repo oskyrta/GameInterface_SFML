@@ -8,7 +8,7 @@
 // Class DataManager
 DataManager::~DataManager() 
 {
-	boost::property_tree::info_parser::write_info(m_rep + "inteface.info", m_interface);
+	boost::property_tree::info_parser::write_info(m_rep + "interface.info", m_interface);
 	boost::property_tree::info_parser::write_info(m_rep + "binds.info", m_binds);
 }
 

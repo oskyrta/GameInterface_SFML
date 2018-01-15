@@ -46,7 +46,7 @@ private:
 
 	std::string m_name;
 
-	PropertyTree m_objects;
+	PropertyTree *m_objects;
 
 	Camera* m_camera;
 	EventController* m_eventController;

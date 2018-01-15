@@ -23,10 +23,12 @@ public:
 	virtual void render() {};
 	virtual void update();
 
-	virtual void initialize(PropertyTree& tree) {};
+	virtual void initialize(PropertyTree* tree) {};
 
 	void setPosition(Vec2 pos) { m_pos = pos; };
 	void setPosition(float x, float y) { m_pos = Vec2(x, y); }
+	Vec2 getPosition() { return m_pos; };
+
 	void setSize(Vec2 size) { m_size = size; };
 	void setSize(float width, float height) { m_size = Vec2(width, height); }
 	void setCamera(Camera* camera) { m_camera = camera; };
@@ -37,7 +39,7 @@ public:
 	bool getMouseOnObject() { return m_mouseOnObject; };
 
 protected:
-	PropertyTree m_tree;
+	PropertyTree *m_tree;
 	bool m_mouseOnObject;
 
 	Vec2 m_pos;

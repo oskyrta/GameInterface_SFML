@@ -20,8 +20,8 @@ UIObject::UIObject()
 
 UIObject::~UIObject()
 {
-	m_tree.put(m_name + ".x", m_pos.x);
-	m_tree.put(m_name + ".y", m_pos.y);
+	m_tree->put("x", m_pos.x / ( m_camera->getSize().x / 2) );
+	m_tree->put("y", m_pos.y / ( m_camera->getSize().y / 2) );
 }
 
 void UIObject::update()

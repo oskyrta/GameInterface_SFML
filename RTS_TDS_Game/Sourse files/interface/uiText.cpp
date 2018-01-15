@@ -22,25 +22,28 @@ UIText::UIText()
 	m_text = sf::Text();
 }
 
-void UIText::initialize(PropertyTree& tree)
+void UIText::initialize(PropertyTree* tree)
 {
 	m_tree = tree;
-	m_string = m_tree.get<std::string>("String", "");
-	m_pos.x = m_tree.get<int>("x");
-	m_pos.y = m_tree.get<int>("y");
-	m_characterSize = m_tree.get<int>("CharacterSize");
-	m_color.r = m_tree.get<int>("Color.r");
-	m_color.g = m_tree.get<int>("Color.g");
-	m_color.b = m_tree.get<int>("Color.b"); 
+	m_string = m_tree->get<std::string>("String", "");
+	m_characterSize = m_tree->get<int>("CharacterSize");
+
+	m_pos.x = (int)( m_tree->get<float>("x") * m_camera->getHalfSize().x );
+	m_pos.y = (int)( m_tree->get<float>("y") * m_camera->getHalfSize().y );
+
+	m_color.r = m_tree->get<int>("Color.r");
+	m_color.g = m_tree->get<int>("Color.g");
+	m_color.b = m_tree->get<int>("Color.b");
 
 	initializeText();
+
+	m_size = m_textSize;
 }
 
 void UIText::initializeText()
 {
 	// Initialize text variable
 	m_text.setFont(*m_dataManager->getFont());
-	m_text.setPosition(m_pos.x + m_size.x, m_pos.y - m_characterSize/2);
 	m_text.setCharacterSize(m_characterSize);
 	m_text.setString(m_string);
 	m_text.setFillColor(m_color);
@@ -71,8 +74,7 @@ void UIText::render()
 	if (m_doubleChangedValue)
 		m_text.setString(s_start + std::to_string(*m_doubleChangedValue) + s_end);
 
-	sf::Vector2f position = getTextPosition();
-	m_text.setPosition(position);
+	m_text.setPosition(getTextPosition());
 
 	m_camera->getRenderWindow()->draw(m_text);
 }
@@ -80,5 +82,5 @@ void UIText::render()
 
 sf::Vector2f UIText::getTextPosition()
 { 
-	return sf::Vector2f(m_camera->getPosition().x + m_textOffset.x + m_pos.x - m_size.x, m_camera->getPosition().y + m_textOffset.y + m_pos.y - m_characterSize / 2); 
+	return sf::Vector2f(m_camera->getCenterPosition().x + m_textOffset.x + m_pos.x - m_textSize.x, m_camera->getCenterPosition().y + m_textOffset.y + m_pos.y - m_characterSize / 2); 
 };

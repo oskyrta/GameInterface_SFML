@@ -51,11 +51,21 @@ bool loop()
 	return true;
 }
 
+void shutup()
+{
+	delete eventController;
+	delete inputController;
+	delete gameInterface;
+	delete dataManager;
+	delete render;
+}
+
 int main()
 {
 	setup();
 	initialize();
 	while (loop());
+	shutup();
 
 	return 0;
 }

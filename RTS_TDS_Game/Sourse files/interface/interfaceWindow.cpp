@@ -14,7 +14,6 @@
 #include <boost\foreach.hpp>
 
 #include <string>
-#include <iostream>
 
 ////////////////////////////////////////////////
 // Extern
@@ -45,15 +44,14 @@ InterfaceWindow::~InterfaceWindow()
 
 void InterfaceWindow::createButtons()
 {
-	PropertyTree buttons = m_objects.get_child("Buttons");
-	int x, y, width, height;
+	PropertyTree* buttons = m_objects->get_child_optional("Buttons").get_ptr();
 
-	BOOST_FOREACH(auto &v, buttons)
+	BOOST_FOREACH(auto &v, *buttons)
 	{
 		UIButton* button = new UIButton();
 		button->setName(v.first);
 		button->setCamera(m_camera);
-		button->initialize(v.second);
+		button->initialize(&v.second);
 
 		m_objectsList.push_back(button);
 	}
@@ -61,15 +59,14 @@ void InterfaceWindow::createButtons()
 
 void InterfaceWindow::createTexts()
 {
-	PropertyTree texts = m_objects.get_child("Texts");
-	int x, y;
+	PropertyTree *texts = m_objects->get_child_optional("Texts").get_ptr();
 
-	BOOST_FOREACH(auto &v, texts)
+	BOOST_FOREACH(auto &v, *texts)
 	{
 		UIText* text = new UIText();
 		text->setName(v.first);
 		text->setCamera(m_camera);
-		text->initialize(v.second);
+		text->initialize(&v.second);
 
 		m_objectsList.push_back(text);
 	}
@@ -83,7 +80,7 @@ void InterfaceWindow::createSprites()
 void InterfaceWindow::initialize(std::string name)
 {
 	m_name = name;
-	m_objects = m_dataManager->getInterfaceSettings()->get_child(name);
+	m_objects = m_dataManager->getInterfaceSettings()->get_child_optional(name).get_ptr();
 
 	createButtons();
 	createTexts();
