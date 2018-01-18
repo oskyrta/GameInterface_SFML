@@ -2,6 +2,7 @@
 // Include
 #include "uiSprite.h"
 #include "camera.h"
+#include "dataManager.h"
 
 
 ////////////////////////////////////////////////
@@ -10,6 +11,7 @@ UISprite::UISprite()
 {
 	// Initialize sprite
 	m_spriteSize = 1;
+	m_spriteContainer = new SpriteContainer();
 }
 
 UISprite::~UISprite()
@@ -18,35 +20,33 @@ UISprite::~UISprite()
 		delete m_sprite;
 }
 
-void UISprite::initialize(std::string spriteName)
+void UISprite::initialize(PropertyTree* tree)
 {
-//	m_sprite = new sf::Sprite();
-//	m_sprite->setTexture(*g_atlas00);
-//	m_sprite->setTextureRect(sf::IntRect());
-//
-//	// Get sprite parameters from data
-//	sf::IntRect rect;
-//	rect.left = settingsManager.p_spriteParameters->get<int>(spriteName + ".x");
-//	rect.top = settingsManager.p_spriteParameters->get<int>(spriteName + ".y");
-//	rect.width = settingsManager.p_spriteParameters->get<int>(spriteName + ".width");
-//	rect.height = settingsManager.p_spriteParameters->get<int>(spriteName + ".height");
-//	m_spriteSize = settingsManager.p_spriteParameters->get<int>(spriteName + ".size");
-//
-//	m_sprite->setTextureRect(rect);
-//	m_rect = rect;
-//	m_sprite->setScale(m_spriteSize, m_spriteSize);
+	UIObject::initialize(tree);
+
+	m_spriteName = m_tree->get<std::string>("SpriteName");
+	initializeSprite();
+}
+
+void UISprite::initializeSprite()
+{
+	m_spriteSize = m_tree->get<int>("scale");
+
+	m_spriteContainer = m_dataManager->getSpriteContainer(m_spriteName);
+	m_sprite = new sf::Sprite();
+	m_sprite->setTexture(*m_spriteContainer->texturePtr);
+	m_sprite->setTextureRect(m_spriteContainer->rect);
+	m_sprite->setScale(m_spriteSize, m_spriteSize);
+
+	m_sprite->setOrigin(m_spriteContainer->rect.width / 2, m_spriteContainer->rect.height / 2);
 }
 
 void UISprite::render()
 {
-	if (m_rect.height != 0)
+	if ( m_spriteContainer->rect.height != 0)
 	{
-		// Calculation top left point
-		float x = (m_pos.x - m_sprite->getTextureRect().width / 2);
-		float y = (m_pos.y - m_sprite->getTextureRect().height / 2);
-
 		// Set position relative to the camera
-		m_sprite->setPosition(roundf(x) + m_camera->getPosition().x, roundf(y) + m_camera->getPosition().y);
+		m_sprite->setPosition(roundf(m_pos.x) + m_camera->getCenterPosition().x, roundf(m_pos.y) + m_camera->getCenterPosition().y);
 
 		m_camera->getRenderWindow()->draw(*m_sprite);
 	}

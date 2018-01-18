@@ -74,7 +74,17 @@ void InterfaceWindow::createTexts()
 
 void InterfaceWindow::createSprites()
 {
+	PropertyTree *sprites = m_objects->get_child_optional("Images").get_ptr();
 
+	BOOST_FOREACH(auto &v, *sprites)
+	{
+		UISprite* sprite = new UISprite();
+		sprite->setName(v.first);
+		sprite->setCamera(m_camera);
+		sprite->initialize(&v.second);
+
+		m_objectsList.push_back(sprite);
+	}
 }
 
 void InterfaceWindow::initialize(std::string name)
@@ -84,6 +94,7 @@ void InterfaceWindow::initialize(std::string name)
 
 	createButtons();
 	createTexts();
+	createSprites();
 }
 
 

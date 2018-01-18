@@ -24,17 +24,14 @@ UIButton::~UIButton()
 
 void UIButton::initialize(PropertyTree* tree)
 {
-	m_tree = tree;
-
-	m_pos.x = (int)(m_tree->get<float>("x") * m_camera->getHalfSize().x);
-	m_pos.y = (int)(m_tree->get<float>("y") * m_camera->getHalfSize().y);
+	UIObject::initialize(tree);
 
 	m_size.x = m_tree->get<int>("width");
 	m_size.y = m_tree->get<int>("height");
 
 	m_event = m_tree->get<std::string>("Event");
 
-	m_string = m_tree->get<std::string>("String");
+	m_string = m_tree->get<std::string>("String", "");
 	if (m_string != "")
 	{
 		m_characterSize = m_tree->get<int>("CharacterSize");
@@ -44,13 +41,8 @@ void UIButton::initialize(PropertyTree* tree)
 		initializeText();
 	}
 
-	m_spriteName = m_tree->get<std::string>("SpriteName");
-	if (m_spriteName != "")
-	{
-		//
-		// Place for sprite initialize
-		//
-	}
+	m_spriteName = m_tree->get<std::string>("SpriteName", "");
+	if (m_spriteName != "") initializeSprite();
 }
 
 void UIButton::update()
@@ -60,6 +52,6 @@ void UIButton::update()
 
 void UIButton::render()
 {
-	//UISprite::render();
+	UISprite::render();
 	UIText::render();
 }

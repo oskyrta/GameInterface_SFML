@@ -24,12 +24,10 @@ UIText::UIText()
 
 void UIText::initialize(PropertyTree* tree)
 {
-	m_tree = tree;
+	UIObject::initialize(tree);
+	
 	m_string = m_tree->get<std::string>("String", "");
 	m_characterSize = m_tree->get<int>("CharacterSize");
-
-	m_pos.x = (int)( m_tree->get<float>("x") * m_camera->getHalfSize().x );
-	m_pos.y = (int)( m_tree->get<float>("y") * m_camera->getHalfSize().y );
 
 	m_color.r = m_tree->get<int>("Color.r");
 	m_color.g = m_tree->get<int>("Color.g");

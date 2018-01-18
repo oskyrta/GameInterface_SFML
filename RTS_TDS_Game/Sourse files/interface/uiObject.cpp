@@ -20,8 +20,19 @@ UIObject::UIObject()
 
 UIObject::~UIObject()
 {
-	m_tree->put("x", m_pos.x / ( m_camera->getSize().x / 2) );
-	m_tree->put("y", m_pos.y / ( m_camera->getSize().y / 2) );
+	m_tree->put("x", m_relativePos.x);
+	m_tree->put("y", m_relativePos.y);
+}
+
+void UIObject::initialize(PropertyTree* tree)
+{
+	m_tree = tree;
+
+	m_relativePos.x = m_tree->get<float>("x");
+	m_relativePos.y = m_tree->get<float>("y");
+
+	m_pos.x = (int)(m_relativePos.x * m_camera->getHalfSize().x);
+	m_pos.y = (int)(m_relativePos.y * m_camera->getHalfSize().y);
 }
 
 void UIObject::update()

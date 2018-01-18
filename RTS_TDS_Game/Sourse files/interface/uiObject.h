@@ -23,7 +23,7 @@ public:
 	virtual void render() {};
 	virtual void update();
 
-	virtual void initialize(PropertyTree* tree) {};
+	virtual void initialize(PropertyTree* tree);
 
 	void setPosition(Vec2 pos) { m_pos = pos; };
 	void setPosition(float x, float y) { m_pos = Vec2(x, y); }
@@ -43,6 +43,7 @@ protected:
 	bool m_mouseOnObject;
 
 	Vec2 m_pos;
+	Vec2 m_relativePos;
 	Vec2 m_size;
 
 	std::string m_name;
