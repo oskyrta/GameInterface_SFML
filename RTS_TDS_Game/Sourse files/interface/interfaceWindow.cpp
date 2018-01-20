@@ -10,6 +10,7 @@
 #include "eventSystem/eventController.h"
 #include "tools/utils.h"
 #include "dataManager.h"
+#include "inputController.h"
 
 #include <boost\foreach.hpp>
 
@@ -100,28 +101,26 @@ void InterfaceWindow::initialize(std::string name)
 
 void InterfaceWindow::update()
 {
-	//sf::Vector2i mousePosition = sf::Mouse::getPosition(*m_camera->getRenderWindow());
-	//sf::Vector2f worldPosition = m_camera->getRenderWindow()->mapPixelToCoords(mousePosition);
-
+	UIObject* tmp = 0;
 	for each (UIObject* obj in m_objectsList)
 	{
 		obj->update();
-	}
-	
-	//if (IsKeyDown(0x70) && m_eventController->getEventState(GameEvent_LeftButtonStay))
-	//{
-	//	for (int i = 0; i < 30; i++)
-	//	{
-	//		if (m_objectsList[i] != 0 && m_objectsList[i]->getMouseOnObject() && m_eventController->getEventState(GameEvent_LeftButtonStay) )
-	//		{
-	//			// Calculate cursor position on window
-	//			Vec2 windowCursorPosition = Vec2(round(worldPosition.x), round(worldPosition.y)) + m_camera->getPosition();
-	//			m_objectsList[i]->setPosition(windowCursorPosition);
 
-	//			break;
-	//		}
-	//	}
-	//}
+		if (obj->getMouseOnObject() && (tmp == 0 || (tmp != 0 && !tmp->isDragged()) )) tmp = obj;
+	}
+
+	if (tmp)
+	{
+		if (IsKeyDown(0x70) && InputController::instance()->getBindState(Bind_LeftButton) & KeyState_Pressed)
+		{
+			tmp->setIsDragged(true);
+			tmp->setPosition(InputController::instance()->getMousePositionC());
+		}
+		else
+		{
+			tmp->setIsDragged(false);
+		}
+	}
 }
 
 void InterfaceWindow::render()

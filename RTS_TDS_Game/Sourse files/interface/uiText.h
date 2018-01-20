@@ -4,22 +4,16 @@
 #include "uiObject.h"
 #include <SFML\Graphics.hpp>
 
-enum TextAlign
-{
-	TextAlign_Left,
-	TextAlign_Center,
-	TextAlign_Right
-};
-
 /////////////////////////////////////////////////
 // Class UIText
-class UIText : public virtual UIObject
+class UIText : public UIObject
 {
 public:
 	UIText();
 	~UIText() {};
 
-	virtual void render();
+	void render();
+	void update();
 
 	void setChangedValue(const int* changedValue) { m_intChangedValue = changedValue; };
 	void setChangedValue(const double* changedValue) { m_doubleChangedValue = changedValue; };
@@ -36,7 +30,7 @@ protected:
 	sf::Font* m_font;
 	sf::Text m_text;
 	sf::Color m_color;
-	TextAlign m_align;
+	Vec2 m_align;
 
 	Vec2 m_textOffset;
 	Vec2 m_textSize;

@@ -2,20 +2,14 @@
 //////////////////////////////
 // Include
 #include <boost\property_tree\ptree.hpp>
+#include <SFML\Graphics.hpp>
+#include "tools\vec2.h"
 
 //////////////////////////////
 // Forward declaration
 class DataManager;
-class Vec2;
+class Render;
 struct Bind;
-
-enum Controls
-{
-	LEFT_BUTTON = 0x01,
-	RIGHT_BUTTON = 0x02,
-	ENTER_KEY = 0x0D,
-	ESC_KEY = 0x1B,
-};
 
 enum KeyState
 {
@@ -27,6 +21,11 @@ enum KeyState
 
 enum Binds
 {
+	Bind_None,
+	Bind_LeftButton,
+	Bind_RightButton,
+	Bind_Enter,
+	Bind_Esc,
 	Bind_Fire,
 
 	Bind_Count
@@ -48,15 +47,18 @@ public:
 
 	short getBindState(Binds bind);
 	Vec2 getMousePosition();
+	Vec2 getMousePositionC();
 	bool mouseOnWindow();
 
 	void setup();
 	void update();
 
 private:
+	Render* m_render;
 	DataManager* m_dataManager;
 	boost::property_tree::ptree* m_tree;
 
+	Vec2 m_mousePosition;
+
 	Bind* m_binds[Bind_Count];
-	Bind* m_controls[4];
 };

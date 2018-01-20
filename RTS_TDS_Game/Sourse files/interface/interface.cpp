@@ -10,6 +10,7 @@
 #include "render.h"
 #include "dataManager.h"
 #include "eventSystem\eventController.h"
+#include "inputController.h"
 #include "tools/utils.h"
 
 /////////////////////////////////////////////////
@@ -63,6 +64,8 @@ void Interface::startListeningEvents()
 
 }
 
+double t_x, t_y;
+
 void Interface::initialize()
 {
 	for (int i = 0; i < MenuTypeCount; i++)
@@ -73,6 +76,12 @@ void Interface::initialize()
 		m_menuList[i]->setCamera(m_render->getCamera(menuName));
 		m_menuList[i]->initialize(menuName);
 	}
+
+	UIText* obj = (UIText*)m_menuList[MenuType_MainMenu]->getObject("TextX");
+	obj->setChangedValue(&t_x);
+
+	obj = (UIText*)m_menuList[MenuType_MainMenu]->getObject("TextY");
+	obj->setChangedValue(&t_y);
 }
 
 void Interface::changeWindow(MenuType windowType)
@@ -84,6 +93,8 @@ void Interface::changeWindow(MenuType windowType)
 
 void Interface::update()
 {
+	t_x = InputController::instance()->getMousePosition().x;
+	t_y = InputController::instance()->getMousePosition().y;
 	changeWindow(activeWindowIndex);
 
 	m_menuList[activeWindowIndex]->update();

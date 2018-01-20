@@ -15,11 +15,20 @@ UIText::UIText()
 	m_intChangedValue = 0;
 	m_doubleChangedValue = 0;
 	m_characterSize = 8;
-	m_align = TextAlign_Left;
+	m_align = Vec2();
 
 	m_changedValuePosition = 0;
 
 	m_text = sf::Text();
+}
+
+float getAlignCoefByString(std::string align)
+{
+	if (align == "Left"   ||  align == "Bottom")	return 0;
+	if (align == "Center" ||  align == "Middle")	return -0.5f;
+	if (align == "Right"  ||  align == "Top")		return -1;
+
+	return 0;
 }
 
 void UIText::initialize(PropertyTree* tree)
@@ -45,6 +54,9 @@ void UIText::initializeText()
 	m_text.setCharacterSize(m_characterSize);
 	m_text.setString(m_string);
 	m_text.setFillColor(m_color);
+
+	m_align.x = getAlignCoefByString(m_tree->get<std::string>("VAlign", ""));
+	m_align.y = getAlignCoefByString(m_tree->get<std::string>("HAlign", ""));
 
 	m_textSize.x = m_text.getLocalBounds().width;
 	m_textSize.y = m_text.getLocalBounds().height;
@@ -75,10 +87,15 @@ void UIText::render()
 	m_text.setPosition(getTextPosition());
 
 	m_camera->getRenderWindow()->draw(m_text);
+	UIObject::render();
 }
 
+void UIText::update()
+{
+	UIObject::update();
+}
 
 sf::Vector2f UIText::getTextPosition()
 { 
-	return sf::Vector2f(m_camera->getCenterPosition().x + m_textOffset.x + m_pos.x - m_textSize.x, m_camera->getCenterPosition().y + m_textOffset.y + m_pos.y - m_characterSize / 2); 
+	return (m_camera->getCenterPosition() + m_textOffset + m_pos + m_textSize*m_align).getInt().getSFVector();
 };

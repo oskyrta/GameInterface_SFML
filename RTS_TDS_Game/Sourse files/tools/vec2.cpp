@@ -84,6 +84,14 @@ Vec2 Vec2::operator/(const float& a)
 	return tmp;
 }
 
+Vec2 Vec2::operator/(const Vec2& a)
+{
+	Vec2 tmp;
+	tmp.x = x / a.x;
+	tmp.y = y / a.y;
+	return tmp;
+}
+
 Vec2 Vec2::operator-(const Vec2& a)
 {
 	Vec2 tmp;

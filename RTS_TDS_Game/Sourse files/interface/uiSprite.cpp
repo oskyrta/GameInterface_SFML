@@ -39,6 +39,9 @@ void UISprite::initializeSprite()
 	m_sprite->setScale(m_spriteSize, m_spriteSize);
 
 	m_sprite->setOrigin(m_spriteContainer->rect.width / 2, m_spriteContainer->rect.height / 2);
+
+	m_size.x = m_sprite->getGlobalBounds().width;
+	m_size.y = m_sprite->getGlobalBounds().height;
 }
 
 void UISprite::render()
@@ -50,4 +53,10 @@ void UISprite::render()
 
 		m_camera->getRenderWindow()->draw(*m_sprite);
 	}
+	UIObject::render();
+}
+
+void UISprite::update()
+{
+	UIObject::update();
 }

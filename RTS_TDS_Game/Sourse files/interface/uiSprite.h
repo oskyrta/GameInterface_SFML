@@ -8,13 +8,14 @@ struct SpriteContainer;
 
 /////////////////////////////////////////////////
 // Class GUISprite
-class UISprite : public virtual UIObject
+class UISprite : public UIObject
 {
 public:
 	UISprite();
 	~UISprite();
 
 	void render();
+	void update();
 
 	void initialize(PropertyTree* tree);
 

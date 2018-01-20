@@ -4,9 +4,9 @@ Main
     {
         Button
         {
-            x 0.800000012
-            y -0.100000001
-            width 10
+            x 0.463888884
+            y -0.263157904
+            width 80
             height 30
             String Button
             Color
@@ -16,14 +16,16 @@ Main
                 b 240
             }
             CharacterSize 16
+            VAlign Center
+            HAlign Middle
             Event OnButtonButtonDown
             SpriteName ""
         }
         ButtonWithImage
         {
-            x 0.800000012
-            y 0.300000012
-            width 10
+            x -0.475000054
+            y -0.294736832
+            width 80
             height 30
             String ImageB
             Color
@@ -33,6 +35,8 @@ Main
                 b 240
             }
             CharacterSize 16
+            VAlign Center
+            HAlign Middle
             Event OnButtonButtonDown
             SpriteName Sphere
             scale 3
@@ -40,11 +44,11 @@ Main
     }
     Texts
     {
-        Text
+        TextX
         {
-            x -0.600000024
-            y 0.899999976
-            String Text
+            x -0.905555546
+            y 0.757894754
+            String ^
             Color
             {
                 r 240
@@ -52,6 +56,23 @@ Main
                 b 240
             }
             CharacterSize 16
+            VAlign Center
+            HAlign Middle
+        }
+        TextY
+        {
+            x -0.908333361
+            y 0.626315773
+            String ^
+            Color
+            {
+                r 240
+                g 240
+                b 240
+            }
+            CharacterSize 16
+            VAlign Center
+            HAlign Middle
         }
     }
     Images
@@ -59,8 +80,8 @@ Main
         Image
         {
             SpriteName Paralelepiped
-            x 0
-            y 0.5
+            x 0.0499999151
+            y 0.257894725
             scale 2
         }
     }

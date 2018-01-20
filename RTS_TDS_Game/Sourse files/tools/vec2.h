@@ -17,12 +17,14 @@ public:
 	Vec2 operator*(const float& a);
 	Vec2 operator*(const Vec2& a);
 	Vec2 operator/(const float& a);
+	Vec2 operator/(const Vec2& a);
 	bool operator==(const Vec2& a);
 
 	sf::Vector2f getSFVector();
 
 	Vec2 normalize();
 	Vec2 magnitude(float ragius);
+	Vec2 getInt() { return Vec2((int)x, (int)y); };
 	float length();
 
 	float x;

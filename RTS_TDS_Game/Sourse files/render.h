@@ -39,6 +39,9 @@ public:
 
 	Camera* getCamera(CameraType type) { return m_cameras[type]; }
 	Camera* getCamera(std::string);
+	sf::RenderWindow* getRenderWindow() { return m_renderWindow; };
+	sf::Vector2u getSize() { return m_renderWindow->getSize(); };
+
 private:
 	Camera* m_cameras[CameraType_Count];
 

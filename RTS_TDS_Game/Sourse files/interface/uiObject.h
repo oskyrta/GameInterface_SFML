@@ -20,7 +20,7 @@ public:
 	UIObject();
 	virtual ~UIObject() ;
 
-	virtual void render() {};
+	virtual void render();
 	virtual void update();
 
 	virtual void initialize(PropertyTree* tree);
@@ -31,16 +31,25 @@ public:
 
 	void setSize(Vec2 size) { m_size = size; };
 	void setSize(float width, float height) { m_size = Vec2(width, height); }
-	void setCamera(Camera* camera) { m_camera = camera; };
-	void setName(std::string name) { m_name = name; };
-
 	Vec2 getSize() { return m_size; };
+
+	void setCamera(Camera* camera) { m_camera = camera; };
+
+	void setName(std::string name) { m_name = name; };
 	std::string getName() { return m_name; };
+
 	bool getMouseOnObject() { return m_mouseOnObject; };
+	bool isDragged() { return m_isDragged; };
+	void setIsDragged(bool dragged) { m_isDragged = dragged; };
+
+protected:
+	void checkMouseOnObject();
+	void drawObjectPosition();
 
 protected:
 	PropertyTree *m_tree;
 	bool m_mouseOnObject;
+	bool m_isDragged;
 
 	Vec2 m_pos;
 	Vec2 m_relativePos;
